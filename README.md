@@ -54,7 +54,7 @@ pnpm run build
 pnpm start
 ```
 
-### Docke r
+### Docker
 
 #### Build Docker Image
 
