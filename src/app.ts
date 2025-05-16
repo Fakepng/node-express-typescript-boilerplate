@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
+import morgan from "morgan";
 
 import corsOptions from "@/configs/cors.config";
 import checkEnvironment from "@/utils/environment.util";
@@ -24,6 +25,14 @@ app.disable("x-powered-by");
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
+
+app.use(
+  morgan("combined", {
+    stream: {
+      write: (message: string) => logger.http(message.trim()),
+    },
+  })
+);
 
 app.use(baseMiddleware);
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

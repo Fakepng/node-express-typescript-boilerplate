@@ -5,7 +5,7 @@ import csv
 from datetime import datetime
 import pytz
 
-log_pattern = re.compile(r'(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z) (?P<level>info|error):(?: \((?P<source>.*?)\))? (?P<message>.*)')
+log_pattern = re.compile(r'(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z) (?P<level>error|warn|info|http|debug):(?: \((?P<source>.*?)\))? (?P<message>.*)')
 
 def convert_to_bangkok_time(utc_time):
     utc_dt = datetime.strptime(utc_time, "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=pytz.utc)

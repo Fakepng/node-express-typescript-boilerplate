@@ -1,6 +1,8 @@
 import winston from "winston";
 import loggerOption from "@/configs/logger.config";
+import { customLevels } from "@/configs/logger.config";
 
+winston.addColors(customLevels.colors);
 const logger = winston.createLogger(loggerOption.create);
 
 logger.configure(loggerOption.config);
